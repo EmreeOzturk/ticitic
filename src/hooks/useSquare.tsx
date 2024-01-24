@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { SquareProps } from "../types";
+import { Square } from "../types";
 import { SquareArray } from "../data";
-export const useSquares = () => {
-    const [squares, setSquares] = useState<SquareProps[]>(SquareArray);
+const useSquares = () => {
+    const [squares, setSquares] = useState<Square[]>(SquareArray);
     return { squares, setSquares };
 };
+
+export default useSquares;

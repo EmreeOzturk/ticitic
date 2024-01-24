@@ -1,5 +1,5 @@
-import { SquareProps } from "../types";
-const arr = new Array<SquareProps>(9).fill({
+import { Square } from "../types";
+const arr = new Array<Square>(9).fill({
   value: undefined,
   corner: undefined,
 });
@@ -17,5 +17,5 @@ export const SquareArray = arr.map((_, index) => {
         : index === 8
         ? "bottomRight"
         : undefined,
-  } as SquareProps;
-});
+  };
+}) as Square[];
