@@ -6,8 +6,6 @@ export type SquareComponentProps = {
   setSq: React.Dispatch<React.SetStateAction<Square[]>>;
 };
 
-
-
 export type Square = {
   id?: number;
   value?: "X" | "O" | undefined;
@@ -19,4 +17,11 @@ export type PlayerProps = {
   score: number;
   symbol: "X" | "O";
   isTurn: boolean;
+};
+
+export type MouseImageTrailProps = {
+  chars: string[];
+  renderImageBuffer: number;
+  rotationRange: number;
+  children: React.ReactNode;
 };
