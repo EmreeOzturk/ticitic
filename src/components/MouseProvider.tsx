@@ -35,7 +35,6 @@ const MouseProvider: React.FC<MouseImageTrailProps> = ({
         const deltaX = x2 - x1;
         const deltaY = y2 - y1;
 
-        // Using the Pythagorean theorem to calculate the distance
         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
         return distance;
