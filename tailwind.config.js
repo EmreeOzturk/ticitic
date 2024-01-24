@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        noisy: "url('/src/assets/images/noisy.gif')",
+        noisy: "url('/src/assets/images/noise.gif')",
       },
     },
   },
