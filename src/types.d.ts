@@ -21,7 +21,7 @@ export type PlayerProps = {
 
 export type MouseImageTrailProps = {
   chars: string[];
-  renderImageBuffer: number;
+  renderCharBuffer: number;
   rotationRange: number;
   children: React.ReactNode;
 };

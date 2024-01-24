@@ -35,7 +35,7 @@ export default function App() {
 
   return (
     <MouseProvider
-      renderImageBuffer={50}
+      renderCharBuffer={30}
       rotationRange={25}
       chars={[
         "T",

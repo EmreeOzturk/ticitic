@@ -5,13 +5,13 @@ import { MouseImageTrailProps } from "../types";
 const MouseProvider: React.FC<MouseImageTrailProps> = ({
     children,
     chars,
-    renderImageBuffer,
+    renderCharBuffer,
     rotationRange,
 }) => {
     const [scope, animate] = useAnimate();
 
     const lastRenderPosition = useRef({ x: 0, y: 0 });
-    const imageRenderCount = useRef(0);
+    const charRenderCount = useRef(0);
 
     const handleMouseMove = (e: React.MouseEvent) => {
         const { clientX, clientY } = e;
@@ -23,7 +23,7 @@ const MouseProvider: React.FC<MouseImageTrailProps> = ({
             lastRenderPosition.current.y
         );
 
-        if (distance >= renderImageBuffer) {
+        if (distance >= renderCharBuffer) {
             lastRenderPosition.current.x = clientX;
             lastRenderPosition.current.y = clientY;
 
@@ -41,14 +41,14 @@ const MouseProvider: React.FC<MouseImageTrailProps> = ({
     };
 
     const renderNextImage = () => {
-        const charIndex = imageRenderCount.current % chars.length;
+        const charIndex = charRenderCount.current % chars.length;
         const selector = `[data-mouse-move-index="${charIndex}"]`;
 
 
         const el = document.querySelector(selector) as HTMLElement;
         el.style.top = `${lastRenderPosition.current.y}px`;
         el.style.left = `${lastRenderPosition.current.x}px`;
-        el.style.zIndex = imageRenderCount.current.toString();
+        el.style.zIndex = charRenderCount.current.toString();
 
         const rotation = Math.random() * rotationRange;
 
@@ -78,7 +78,7 @@ const MouseProvider: React.FC<MouseImageTrailProps> = ({
             { ease: "linear", duration: 0.5, delay: 5 }
         );
 
-        imageRenderCount.current = imageRenderCount.current + 1;
+        charRenderCount.current = charRenderCount.current + 1;
     };
 
     return (
