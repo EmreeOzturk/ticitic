@@ -27,7 +27,7 @@ const MouseProvider: React.FC<MouseImageTrailProps> = ({
             lastRenderPosition.current.x = clientX;
             lastRenderPosition.current.y = clientY;
 
-            renderNextImage();
+            renderNextChar();
         }
     };
 
@@ -40,7 +40,7 @@ const MouseProvider: React.FC<MouseImageTrailProps> = ({
         return distance;
     };
 
-    const renderNextImage = () => {
+    const renderNextChar = () => {
         const charIndex = charRenderCount.current % chars.length;
         const selector = `[data-mouse-move-index="${charIndex}"]`;
 
