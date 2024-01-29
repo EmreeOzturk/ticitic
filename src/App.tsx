@@ -3,6 +3,7 @@ import useSquares from "./hooks/useSquare";
 import useFillSquare from "./hooks/useFillSquare";
 import { checkWinCondition } from "./helpers";
 import { useEffect, useState } from "react";
+
 import NoisyOverlay from "./components/NoisyOverlay";
 import MouseProvider from "./components/MouseProvider";
 import { socket } from './socket';
@@ -10,12 +11,16 @@ import { ConnectionState } from './components/ConnectionState';
 import { ConnectionManager } from './components/ConnectionManager';
 import { Square as sq } from "./types";
 import Enter from "./components/Enter";
+import LoginRegisterForm from "./components/LoginRegisterForm";
 export default function App() {
   const { squares, setSquares } = useSquares();
   const { fillSquare } = useFillSquare();
   const [isConnected, setIsConnected] = useState(socket.connected);
+  const [isLogged, setIsLogged] = useState(false);
+  const [loginOrRegister, setLoginOrRegister] = useState("login");
 
   useEffect(() => {
+
     function onConnect() {
       setIsConnected(true);
     }
@@ -92,6 +97,14 @@ export default function App() {
       </div>
     )
   }
+
+
+  if (!isLogged) {
+    return (
+      <LoginRegisterForm loginOrRegister={loginOrRegister} setLoginOrRegister={setLoginOrRegister} />
+    )
+  }
+
 
   return (
     <MouseProvider

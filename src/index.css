@@ -2,33 +2,73 @@
 @tailwind components;
 @tailwind utilities;
 
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(to right, #a855f7, #d946ef);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+
+input:focus + .slider {
+  box-shadow: 0 0 7px #a855f7;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+.slider.round {
+  border-radius: 11px;
+}
+
+.slider.round:before {
+  border-radius: 11px;
+}
+
 .hoverText {
-    transition:
-      0.35s font-weight,
-      0.35s color;
-  }
-  
-  .hoverText:hover {
-    font-weight: 900;
-    color: rgb(238, 242, 255);
-  }
-  
-  /* To the right */
-  .hoverText:hover + .hoverText {
-    font-weight: 500;
-    color: rgb(199, 210, 254);
-  }
-  
-  .hoverText:hover + .hoverText + .hoverText {
-    font-weight: 300;
-  }
-  
-  /* To the left */
-  .hoverText:has(+ .hoverText:hover) {
-    font-weight: 500;
-    color: rgb(199, 210, 254);
-  }
-  
-  .hoverText:has(+ .hoverText + .hoverText:hover) {
-    font-weight: 300;
-  }
+  transition: 0.35s font-weight, 0.35s color;
+}
+
+.hoverText:hover {
+  font-weight: 900;
+  color: rgb(238, 242, 255);
+}
+
+.hoverText:hover + .hoverText {
+  font-weight: 500;
+  color: rgb(199, 210, 254);
+}
+
+.hoverText:hover + .hoverText + .hoverText {
+  font-weight: 300;
+}
+
+.hoverText:has(+ .hoverText:hover) {
+  font-weight: 500;
+  color: rgb(199, 210, 254);
+}
+
+.hoverText:has(+ .hoverText + .hoverText:hover) {
+  font-weight: 300;
+}
