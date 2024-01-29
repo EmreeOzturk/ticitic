@@ -90,7 +90,7 @@ const MouseProvider: React.FC<MouseImageTrailProps> = ({
             {children}
             {chars.map((ch, index) => (
                 <h2
-                    className="text-4xl text-red-400 absolute left-0 top-0 opacity-0 "
+                    className="select-none pointer-events-none text-4xl text-red-400 absolute left-0 top-0 opacity-0 "
                     key={index}
                     data-mouse-move-index={index}
                 >

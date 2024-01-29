@@ -1,5 +1,7 @@
 import useCurrentValue from "./useCurrentValue"
 import { Square } from "../types";
+import { socket } from "../socket";
+
 const useFillSquare = () => {
     const { currentValue, toggleCurrentValue } = useCurrentValue();
 
@@ -17,6 +19,7 @@ const useFillSquare = () => {
             });
         });
         toggleCurrentValue();
+        socket.emit('receive-table-data', { id, currentValue })
     }
     return {
         fillSquare
